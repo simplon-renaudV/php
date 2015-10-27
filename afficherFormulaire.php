@@ -16,10 +16,26 @@
       echo "Message : ".$_POST['message']."<br>";
 
       $message = $_POST['prenom'].';'.$_POST['nom'].';'.$_POST['tel'].';'.$_POST['mail'].';'.$_POST['objet'].';'.$_POST['message'];
-      $fichier=fopen('contacts', 'a+');
 
-      fputs($fichier, $message);
-      fclose($fichier)
+      #Ouverture de fichier Methode 1
+      ##################################
+      #$fichier=fopen('contacts', 'a+');
+      #fputs($fichier, $message);
+      #fclose($fichier);
+
+
+      #Ouverture de fichier methode 2
+      ##################################
+      #$fichier='contacts';
+      #$current = file_get_contents($fichier);
+      #$current .= $message;
+      #file_put_contents($fichier, $current);
+
+      #Ouverture de fichier methode 3
+      ##################################
+      $fichier = 'contacts';
+      file_put_contents($fichier, $message, FILE_APPEND);
     ?>
+
   </body>
 </html>
